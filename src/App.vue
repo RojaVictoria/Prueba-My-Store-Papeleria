@@ -1,32 +1,41 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+    <Navbar/>
+    <transition name="transition">
+      <router-view />
+    </transition>
+    <Footer/>
   </div>
 </template>
 
+<script>
+import Navbar from "./components/Navbar.vue";
+import Footer from './components/Footer.vue';
+export default {
+  components: {
+    Navbar, 
+    Footer,
+  },
+  name: "App",
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body, html {
+  margin: 0;
   text-align: center;
-  color: #2c3e50;
+  width: 100%;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Serif Text', serif;
+}
+p, a {
+  font-family: 'Comfortaa', cursive;
+}
+.transition-enter-active, .transition-leave-active {
+transition: opacity .3s,
+}
+.transition-enter, .transition-leave-to{
+opacity: 0;
 }
 </style>
